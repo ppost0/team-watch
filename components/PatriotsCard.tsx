@@ -17,10 +17,14 @@ interface PatriotsCardProps {
 const PatriotsCard: React.FC<PatriotsCardProps> = ({ wins, losses, teamLogo, nextGame }) => {
 
   return (
-    <div className="border rounded-lg p-6 shadow-md">
-      <img src={teamLogo} alt="New England Patriots Logo" className="w-16 h-16 mb-4" />
-      <h2 className="text-xl font-bold">New England Patriots</h2>
-      <p className="text-sm text-gray-600">{wins} - {losses}</p>
+    <div className="bg-[#091932] border rounded-lg p-6 shadow-md">
+      <div className="flex items-center justify-between">
+        <img src={teamLogo} alt="New England Patriots Logo" className="w-16 h-16 mb-4" />
+        <div className="flex flex-col">
+          <h2 className="text-2xl font-bold">New England Patriots</h2>
+          <p className="text-base text-gray-600">{wins} - {losses}</p>
+        </div>
+      </div>
       {nextGame ? (
         <div className="mt-4">
           <h3 className="font-semibold">Next Game:</h3>
