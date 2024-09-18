@@ -6,7 +6,7 @@ interface UpcomingGame {
   name: string;
   date: string;
   week: number;
-  opponentLogo: string; // Add this if you have the logo URL
+  opponentLogo: string;
 }
 
 interface PatriotsData {

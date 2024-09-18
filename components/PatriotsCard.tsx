@@ -4,20 +4,20 @@ interface UpcomingGame {
   name: string;
   date: string;
   week: number;
-  opponentLogo: string; // URL for the opponent's logo
+  opponentLogo: string;
 }
 
 interface PatriotsCardProps {
   wins: number;
   losses: number;
   nextGame: UpcomingGame | null;
-  teamLogo: string; // Add this line
+  teamLogo: string;
 }
 
 const PatriotsCard: React.FC<PatriotsCardProps> = ({ wins, losses, teamLogo, nextGame }) => {
 
   return (
-    <div className="border rounded-lg p-6 shadow-md"> {/* Increased padding */}
+    <div className="border rounded-lg p-6 shadow-md">
       <img src={teamLogo} alt="New England Patriots Logo" className="w-16 h-16 mb-4" />
       <h2 className="text-xl font-bold">New England Patriots</h2>
       <p className="text-sm text-gray-600">{wins} - {losses}</p>

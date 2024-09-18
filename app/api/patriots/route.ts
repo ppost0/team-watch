@@ -28,7 +28,8 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
 
     const upcomingGames = response.data.events.filter(event => {
       const eventDate = new Date(event.date);
-      return eventDate > new Date(); // Filter for upcoming games
+      // upcoming games
+      return eventDate > new Date();
     });
 
     const teamLogo = response.data.team.logo;
@@ -43,7 +44,8 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
     console.log('opponentLogo', opponentLogo);
 
     const formatDate = (dateString: string) => {
-      const options: Intl.DateTimeFormatOptions = { month: 'short', day: '2-digit', year: 'numeric' }; // Changed to 'short'
+      // date format
+      const options: Intl.DateTimeFormatOptions = { month: 'short', day: '2-digit', year: 'numeric' };
       return new Date(dateString).toLocaleDateString('en-US', options);
     };
 
@@ -54,7 +56,7 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
       nextGame: nextGame ? {
         opponentLogo,
         name: nextGame.name,
-        date: formatDate(nextGame.date), // Format the date here
+        date: formatDate(nextGame.date),
         week: nextGame.week.number,
       } : null,
     };
