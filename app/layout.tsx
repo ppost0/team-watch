@@ -24,6 +24,9 @@ const geistMono = localFont({
 export const metadata: Metadata = {
   title: "Team Watch",
   description: "Track your favorite teams' records and upcoming games.",
+  icons: {
+    icon: "/icon.ico",
+  },
 };
 
 export default function RootLayout({
@@ -33,6 +36,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/icon.ico" />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${russo.variable} antialiased`}
       >
