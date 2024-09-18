@@ -7,6 +7,7 @@ interface PatriotsData {
     logo: string;
   };
   events: Array<{
+    competitions: any;
     date: string;
     name: string;
     week: {
