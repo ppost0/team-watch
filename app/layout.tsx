@@ -1,6 +1,14 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import { Russo_One } from 'next/font/google'
+
+const russo = Russo_One({
+  weight: '400',
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-russo'
+})
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -26,7 +34,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${russo.variable} antialiased`}
       >
         {children}
       </body>
