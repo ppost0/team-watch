@@ -12,6 +12,7 @@ interface UpcomingGame {
 interface PatriotsData {
   wins: number;
   losses: number;
+  teamLogo: string;
   nextGame: UpcomingGame | null;
 }
 
@@ -48,7 +49,7 @@ export default function Home() {
       <PatriotsCard
         wins={patriotsData?.wins || 0}
         losses={patriotsData?.losses || 0}
-        teamLogo={patriotsData?.teamLogo || null}
+        teamLogo={patriotsData?.teamLogo || ''}
         nextGame={patriotsData?.nextGame || null}
       />
     </div>
