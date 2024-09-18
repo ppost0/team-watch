@@ -48,6 +48,7 @@ export default function Home() {
       <PatriotsCard
         wins={patriotsData?.wins || 0}
         losses={patriotsData?.losses || 0}
+        teamLogo={patriotsData?.teamLogo || null}
         nextGame={patriotsData?.nextGame || null}
       />
     </div>

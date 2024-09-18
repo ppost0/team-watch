@@ -50,8 +50,8 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
     const patriotsData = {
       wins,
       losses,
+      teamLogo,
       nextGame: nextGame ? {
-        teamLogo,
         opponentLogo,
         name: nextGame.name,
         date: formatDate(nextGame.date), // Format the date here
