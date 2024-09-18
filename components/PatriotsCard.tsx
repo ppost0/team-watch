@@ -14,8 +14,8 @@ interface PatriotsCardProps {
   teamLogo: string; // Add this line
 }
 
-const PatriotsCard: React.FC<PatriotsCardProps> = ({ wins, losses, teamLogo, nextGame }) => {
-  console.log('Team Logo URL:', teamLogo);
+const PatriotsCard: React.FC<PatriotsCardProps> = ({ wins, losses, nextGame }) => {
+
   return (
     <div className="border rounded-lg p-6 shadow-md"> {/* Increased padding */}
       <img src={nextGame.teamLogo} alt="New England Patriots Logo" className="w-16 h-16 mb-4" />
