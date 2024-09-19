@@ -1,10 +1,12 @@
 'use client'
 import { useEffect, useState } from "react";
 import PatriotsCard from "@/components/PatriotsCard";
+import Header from "@/components/Header";
 
 interface UpcomingGame {
   name: string;
   date: string;
+  time: string; // Add time property
   week: number;
   opponentLogo: string;
 }
@@ -12,6 +14,7 @@ interface UpcomingGame {
 interface PatriotsData {
   wins: number;
   losses: number;
+  teamLogo: string;
   nextGame: UpcomingGame | null;
 }
 
@@ -44,13 +47,16 @@ export default function Home() {
   }
 
   return (
-    <div className="flex items-center justify-center min-h-screen">
-      <PatriotsCard
-        wins={patriotsData?.wins || 0}
-        losses={patriotsData?.losses || 0}
-        teamLogo={patriotsData?.teamLogo || null}
-        nextGame={patriotsData?.nextGame || null}
-      />
+    <div className="min-h-screen">
+      <Header />
+      <div className="grid grid-cols-2 gap-12 p-12 items-center justify-center">
+        <PatriotsCard
+          wins={patriotsData?.wins || 0}
+          losses={patriotsData?.losses || 0}
+          teamLogo={patriotsData?.teamLogo || ''}
+          nextGame={patriotsData?.nextGame || null}
+        />
+      </div>
     </div>
   );
 }

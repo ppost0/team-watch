@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import axios from 'axios';
+import next from 'next';
 
 interface PatriotsData {
   team: {
@@ -7,12 +8,21 @@ interface PatriotsData {
     logo: string;
   };
   events: Array<{
-    competitions: any;
+    competitions: Array<{
+      competitors: {
+        team: {
+          logos: {
+            href: string;
+          }[];
+        };
+      }[]
+    }>;
     date: string;
     name: string;
     week: {
       number: number;
     };
+    startTime: string; // Ensure this is in ISO format
   }>;
 }
 
@@ -33,15 +43,18 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
     });
 
     const teamLogo = response.data.team.logo;
-    console.log('teamLogo', teamLogo);
 
     const nextGame = upcomingGames.length > 0 ? upcomingGames[0] : null;
 
+    console.log('HELLO', nextGame)
+
     let opponentLogo = null;
+    let gameTime = null;
     if (nextGame) {
       opponentLogo = nextGame.competitions[0].competitors[0].team.logos[0].href;
+      const startTime = new Date(nextGame.date); // Ensure this is a valid date
+      gameTime = startTime.toLocaleTimeString('en-US', { timeZone: 'America/New_York', hour: 'numeric', minute: 'numeric', hour12: true });
     }
-    console.log('opponentLogo', opponentLogo);
 
     const formatDate = (dateString: string) => {
       // date format
@@ -57,6 +70,7 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
         opponentLogo,
         name: nextGame.name,
         date: formatDate(nextGame.date),
+        time: gameTime,
         week: nextGame.week.number,
       } : null,
     };
