@@ -29,11 +29,11 @@ const PatriotsCard: React.FC<PatriotsCardProps> = ({ wins, losses, teamLogo, nex
       {nextGame ? (
         <div className="mt-4">
           <h3 className="font-semibold">Next Game:</h3>
-          <div className="flex items-center">
-            <img src={nextGame.opponentLogo} alt={`${nextGame.name} Logo`} className="w-10 h-10 mr-2" />
+          <div className="flex items-center gap-4 p-2">
+            <img src={nextGame.opponentLogo} alt={`${nextGame.name} Logo`} className="w-14 h-14" />
             <div>
-              <p>{nextGame.name}</p>
-              <p className="text-sm text-gray-500">{nextGame.date} at {nextGame.time} (Week {nextGame.week})</p> {/* Display time here */}
+              <p className='text-gray-200'>{nextGame.name}</p>
+              <p className="text-sm text-gray-500">{nextGame.date} at {nextGame.time} (Week {nextGame.week})</p>
             </div>
           </div>
         </div>
