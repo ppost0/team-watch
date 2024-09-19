@@ -6,6 +6,7 @@ import Header from "@/components/Header";
 interface UpcomingGame {
   name: string;
   date: string;
+  time: string; // Add time property
   week: number;
   opponentLogo: string;
 }
@@ -46,9 +47,9 @@ export default function Home() {
   }
 
   return (
-    <>
+    <div className="min-h-screen">
       <Header />
-      <div className="flex items-center justify-center min-h-screen">
+      <div className="grid grid-cols-2 gap-12 p-12 items-center justify-center">
         <PatriotsCard
           wins={patriotsData?.wins || 0}
           losses={patriotsData?.losses || 0}
@@ -56,6 +57,6 @@ export default function Home() {
           nextGame={patriotsData?.nextGame || null}
         />
       </div>
-    </>
+    </div>
   );
 }
