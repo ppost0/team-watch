@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
 import axios from 'axios';
-import next from 'next';
 
 interface PatriotsData {
   team: {
@@ -46,8 +45,6 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
 
     const nextGame = upcomingGames.length > 0 ? upcomingGames[0] : null;
 
-    console.log('HELLO', nextGame)
-
     let opponentLogo = null;
     let gameTime = null;
     if (nextGame) {
@@ -57,9 +54,17 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
     }
 
     const formatDate = (dateString: string) => {
+      const date = new Date(dateString);
+      const today = new Date();
+      // Check if the date is today
+      if (date.getFullYear() === today.getFullYear() &&
+          date.getMonth() === today.getMonth() &&
+          date.getDate() === today.getDate()) {
+        return "Today";
+      }
       // date format
       const options: Intl.DateTimeFormatOptions = { month: 'short', day: '2-digit', year: 'numeric' };
-      return new Date(dateString).toLocaleDateString('en-US', options);
+      return date.toLocaleDateString('en-US', options);
     };
 
     const patriotsData = {
