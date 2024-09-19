@@ -3,7 +3,7 @@ import React from 'react';
 interface UpcomingGame {
   name: string;
   date: string;
-  time: string; // Add time property
+  time: string;
   week: number;
   opponentLogo: string;
 }
@@ -28,8 +28,8 @@ const PatriotsCard: React.FC<PatriotsCardProps> = ({ wins, losses, teamLogo, nex
       </div>
       {nextGame ? (
         <div className="mt-4">
-          <h3 className="font-semibold">Next Game:</h3>
-          <div className="flex items-center gap-4 p-2">
+          <h3 className="font-semibold px-2 text-gray-200">Next Game:</h3>
+          <div className="flex items-center gap-4 px-2">
             <img src={nextGame.opponentLogo} alt={`${nextGame.name} Logo`} className="w-14 h-14" />
             <div>
               <p className='text-gray-200'>{nextGame.name}</p>
