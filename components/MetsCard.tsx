@@ -8,21 +8,20 @@ interface UpcomingGame {
   opponentLogo: string;
 }
 
-interface PatriotsCardProps {
+interface MetsCardProps {
   wins: number;
   losses: number;
   nextGame: UpcomingGame | null;
   teamLogo: string;
 }
 
-const PatriotsCard: React.FC<PatriotsCardProps> = ({ wins, losses, teamLogo, nextGame }) => {
-
+const MetsCard: React.FC<MetsCardProps> = ({ wins, losses, teamLogo, nextGame }) => {
   return (
-    <div className="bg-[#091932] border rounded-lg p-6 shadow-md">
+    <div className="bg-[#002D72] border rounded-lg p-6 shadow-md">
       <div className="flex items-center justify-around">
-        <img src={teamLogo} alt="New England Patriots Logo" className="w-40 h-40" />
+        <img src={teamLogo} alt="New York Mets Logo" className="w-40 h-40" />
         <div className="flex items-center flex-col gap-2">
-          <h2 className="text-2xl font-bold">New England Patriots</h2>
+          <h2 className="text-2xl font-bold">New York Mets</h2>
           <p className="text-2xl text-neutral-300">{wins} - {losses}</p>
         </div>
       </div>
@@ -44,4 +43,4 @@ const PatriotsCard: React.FC<PatriotsCardProps> = ({ wins, losses, teamLogo, nex
   );
 };
 
-export default PatriotsCard;
+export default MetsCard;

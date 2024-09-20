@@ -4,25 +4,23 @@ interface UpcomingGame {
   name: string;
   date: string;
   time: string;
-  week: number;
   opponentLogo: string;
 }
 
-interface PatriotsCardProps {
+interface PhoenixSunsCardProps {
   wins: number;
   losses: number;
   nextGame: UpcomingGame | null;
   teamLogo: string;
 }
 
-const PatriotsCard: React.FC<PatriotsCardProps> = ({ wins, losses, teamLogo, nextGame }) => {
-
+const PhoenixSunsCard: React.FC<PhoenixSunsCardProps> = ({ wins, losses, teamLogo, nextGame }) => {
   return (
-    <div className="bg-[#091932] border rounded-lg p-6 shadow-md">
+    <div className="bg-[#5A2D91] border rounded-lg p-6 shadow-md">
       <div className="flex items-center justify-around">
-        <img src={teamLogo} alt="New England Patriots Logo" className="w-40 h-40" />
+        <img src={teamLogo} alt="Phoenix Suns Logo" className="w-40 h-40" />
         <div className="flex items-center flex-col gap-2">
-          <h2 className="text-2xl font-bold">New England Patriots</h2>
+          <h2 className="text-2xl font-bold">Phoenix Suns</h2>
           <p className="text-2xl text-neutral-300">{wins} - {losses}</p>
         </div>
       </div>
@@ -33,7 +31,7 @@ const PatriotsCard: React.FC<PatriotsCardProps> = ({ wins, losses, teamLogo, nex
             <img src={nextGame.opponentLogo} alt={`${nextGame.name} Logo`} className="w-14 h-14" />
             <div>
               <p className='text-gray-200'>{nextGame.name}</p>
-              <p className="text-sm text-gray-500">{nextGame.date} at {nextGame.time} (Week {nextGame.week})</p>
+              <p className="text-sm text-gray-500">{nextGame.date} at {nextGame.time}</p>
             </div>
           </div>
         </div>
@@ -44,4 +42,4 @@ const PatriotsCard: React.FC<PatriotsCardProps> = ({ wins, losses, teamLogo, nex
   );
 };
 
-export default PatriotsCard;
+export default PhoenixSunsCard;
