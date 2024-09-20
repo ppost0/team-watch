@@ -8,14 +8,14 @@ interface UpcomingGame {
   opponentLogo: string;
 }
 
-interface NewYorkMetsCardProps {
+interface MetsCardProps {
   wins: number;
   losses: number;
   nextGame: UpcomingGame | null;
   teamLogo: string;
 }
 
-const NewYorkMetsCard: React.FC<NewYorkMetsCardProps> = ({ wins, losses, teamLogo, nextGame }) => {
+const MetsCard: React.FC<MetsCardProps> = ({ wins, losses, teamLogo, nextGame }) => {
   return (
     <div className="bg-[#002D72] border rounded-lg p-6 shadow-md">
       <div className="flex items-center justify-around">
@@ -43,4 +43,4 @@ const NewYorkMetsCard: React.FC<NewYorkMetsCardProps> = ({ wins, losses, teamLog
   );
 };
 
-export default NewYorkMetsCard;
+export default MetsCard;
