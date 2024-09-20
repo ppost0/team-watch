@@ -2,6 +2,9 @@
 import { useEffect, useState } from "react";
 import PatriotsCard from "@/components/PatriotsCard";
 import Header from "@/components/Header";
+import PhoenixSunsCard from "@/components/SunsCard";
+import NewYorkMetsCard from "@/components/MetsCard";
+import ManchesterUnitedCard from "@/components/UnitedCard";
 
 interface UpcomingGame {
   name: string;
@@ -56,6 +59,14 @@ export default function Home() {
           teamLogo={patriotsData?.teamLogo || ''}
           nextGame={patriotsData?.nextGame || null}
         />
+        <PhoenixSunsCard
+        wins={100}
+        losses={100}
+        teamLogo=""
+        nextGame={new Date}
+        />
+        <NewYorkMetsCard/>
+        <ManchesterUnitedCard/>
       </div>
     </div>
   );
