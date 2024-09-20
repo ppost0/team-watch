@@ -5,7 +5,6 @@ import Header from "@/components/Header";
 import PhoenixSunsCard from "@/components/SunsCard";
 import NewYorkMetsCard from "@/components/MetsCard";
 import ManchesterUnitedCard from "@/components/UnitedCard";
-import MetsCard from "@/components/MetsCard";
 
 interface UpcomingGame {
   name: string;

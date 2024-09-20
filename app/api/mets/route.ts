@@ -9,6 +9,7 @@ interface MetsData {
   events: Array<{
     name: string;
     date: string;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     competitions: any[];
   }>;
   wins: number;
