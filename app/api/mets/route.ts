@@ -58,7 +58,7 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
     let gameTime = null;
 
     if (nextGame) {
-      opponentLogo = nextGame.competitions[0].competitors[0].team.logos[0].href;
+      opponentLogo = nextGame.competitions[0].competitors[1].team.logos[0].href;
       const startTime = new Date(nextGame.date);
       gameTime = startTime.toLocaleTimeString('en-US', { timeZone: 'America/New_York', hour: 'numeric', minute: 'numeric', hour12: true });
     }
