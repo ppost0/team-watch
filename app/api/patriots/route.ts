@@ -21,7 +21,7 @@ interface PatriotsData {
     week: {
       number: number;
     };
-    startTime: string; // Ensure this is in ISO format
+    startTime: string;
   }>;
 }
 
