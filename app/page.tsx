@@ -23,6 +23,7 @@ interface PatriotsData {
 
 export default function Home() {
   const [patriotsData, setPatriotsData] = useState<PatriotsData | null>(null);
+  const [phoenixSunsData, setPhoenixSunsData] = useState<PatriotsData | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -38,7 +39,18 @@ export default function Home() {
       }
     };
 
+    const fetchPhoenixSunsData = async () => {
+      try {
+        const response = await fetch('/api/suns');
+        const data = await response.json();
+        setPhoenixSunsData(data.record);
+      } catch (error) {
+        console.error('Error fetching Phoenix Suns data:', error);
+      }
+    };
+
     fetchPatriotsData();
+    fetchPhoenixSunsData();
   }, []);
 
   if (loading) {
@@ -60,10 +72,10 @@ export default function Home() {
           nextGame={patriotsData?.nextGame || null}
         />
         <PhoenixSunsCard
-        wins={100}
-        losses={100}
-        teamLogo=""
-        nextGame={new Date}
+          wins={phoenixSunsData?.wins || 0}
+          losses={phoenixSunsData?.losses || 0}
+          teamLogo={phoenixSunsData?.teamLogo || ''}
+          nextGame={phoenixSunsData?.nextGame || null}
         />
         <NewYorkMetsCard/>
         <ManchesterUnitedCard/>

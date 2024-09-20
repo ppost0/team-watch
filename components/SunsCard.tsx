@@ -4,7 +4,6 @@ interface UpcomingGame {
   name: string;
   date: string;
   time: string;
-  week: number;
   opponentLogo: string;
 }
 
@@ -32,7 +31,7 @@ const PhoenixSunsCard: React.FC<PhoenixSunsCardProps> = ({ wins, losses, teamLog
             <img src={nextGame.opponentLogo} alt={`${nextGame.name} Logo`} className="w-14 h-14" />
             <div>
               <p className='text-gray-200'>{nextGame.name}</p>
-              <p className="text-sm text-gray-500">{nextGame.date} at {nextGame.time} (Week {nextGame.week})</p>
+              <p className="text-sm text-gray-500">{nextGame.date} at {nextGame.time}</p>
             </div>
           </div>
         </div>
