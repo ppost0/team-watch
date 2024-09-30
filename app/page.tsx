@@ -26,6 +26,7 @@ export default function Home() {
   const [phoenixSunsData, setPhoenixSunsData] = useState<PatriotsData | null>(null);
   const [loading, setLoading] = useState(true);
   const [metsData, setMetsData] = useState<PatriotsData | null>(null); // Add state for Mets data
+  const [manchesterUnitedData, setManchesterUnitedData] = useState<PatriotsData | null>(null); // Add state for Manchester United data
 
   useEffect(() => {
     const fetchPatriotsData = async () => {
@@ -60,9 +61,20 @@ export default function Home() {
       }
     };
 
+    const fetchManchesterUnitedData = async () => { // Add fetch function for Manchester United data
+      try {
+        const response = await fetch('/api/united');
+        const data = await response.json();
+        setManchesterUnitedData(data.record);
+      } catch (error) {
+        console.error('Error fetching Manchester United data:', error);
+      }
+    };
+
     fetchPatriotsData();
     fetchPhoenixSunsData();
     fetchMetsData(); // Call the fetch function for Mets data
+    fetchManchesterUnitedData(); // Call the fetch function for Manchester United data
   }, []);
 
   if (loading) {
@@ -95,8 +107,12 @@ export default function Home() {
           teamLogo={metsData?.teamLogo || ''}
           nextGame={metsData?.nextGame || null}
         />
-        <ManchesterUnitedCard/>
-
+        <ManchesterUnitedCard
+          wins={manchesterUnitedData?.wins || 0}
+          losses={manchesterUnitedData?.losses || 0}
+          teamLogo={manchesterUnitedData?.teamLogo || ''}
+          nextGame={manchesterUnitedData?.nextGame || null}
+        />
       </div>
     </div>
   );
