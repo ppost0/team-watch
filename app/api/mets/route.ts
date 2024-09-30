@@ -59,7 +59,8 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
     let gameTime = null;
 
     if (nextGame) {
-      opponentLogo = nextGame.competitions[0].competitors[1].team.logos[0].href;
+      const competitors = nextGame.competitions[0].competitors;
+      opponentLogo = competitors[1].team.displayName === "New York Mets" ? competitors[0].team.logos[0].href : competitors[1].team.logos[0].href;
       const startTime = new Date(nextGame.date);
       gameTime = startTime.toLocaleTimeString('en-US', { timeZone: 'America/New_York', hour: 'numeric', minute: 'numeric', hour12: true });
     }
