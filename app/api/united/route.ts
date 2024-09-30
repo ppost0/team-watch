@@ -41,7 +41,7 @@ const formatDate = (dateString: string) => {
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export async function GET(request: NextRequest): Promise<NextResponse> {
   try {
-    const unitedApiUrl = 'https://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/teams/1/schedule'; // Update the URL as needed
+    const unitedApiUrl = 'https://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/teams/360/schedule';
 
     const response = await axios.get<UnitedData>(unitedApiUrl);
     const recordSummary = response.data.team.recordSummary;
