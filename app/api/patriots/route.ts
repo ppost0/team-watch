@@ -48,7 +48,12 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
     let opponentLogo = null;
     let gameTime = null;
     if (nextGame) {
+      // Determine the opponent logo based on the location
+      const isHomeGame = nextGame.competitions[0].competitors[0].team.logos[0].href;
       opponentLogo = nextGame.competitions[0].competitors[0].team.logos[0].href;
+      if (nextGame.competitions[0].competitors[0].team.location === "New England") {
+        opponentLogo = nextGame.competitions[0].competitors[1].team.logos[0].href; // Use the opponent's logo
+      }
       const startTime = new Date(nextGame.date); // Ensure this is a valid date
       gameTime = startTime.toLocaleTimeString('en-US', { timeZone: 'America/New_York', hour: 'numeric', minute: 'numeric', hour12: true });
     }

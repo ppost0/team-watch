@@ -1,10 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
 import axios from 'axios';
 
-interface MetsData {
+interface UnitedData {
   team: {
     recordSummary: string;
-    logo: string; // Added logo property
+    logo: string;
   };
   events: Array<{
     name: string;
@@ -41,9 +41,9 @@ const formatDate = (dateString: string) => {
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export async function GET(request: NextRequest): Promise<NextResponse> {
   try {
-    const metsApiUrl = 'https://site.api.espn.com/apis/site/v2/sports/baseball/mlb/teams/21/schedule';
+    const unitedApiUrl = 'https://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/teams/360/schedule';
 
-    const response = await axios.get<MetsData>(metsApiUrl);
+    const response = await axios.get<UnitedData>(unitedApiUrl);
     const recordSummary = response.data.team.recordSummary;
     const [wins, losses] = recordSummary.split('-').map(Number);
     const teamLogo = response.data.team.logo;
@@ -59,13 +59,12 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
     let gameTime = null;
 
     if (nextGame) {
-      const competitors = nextGame.competitions[0].competitors;
-      opponentLogo = competitors[1].team.displayName === "New York Mets" ? competitors[0].team.logos[0].href : competitors[1].team.logos[0].href;
+      opponentLogo = nextGame.competitions[0].competitors[1].team.logos[0].href;
       const startTime = new Date(nextGame.date);
       gameTime = startTime.toLocaleTimeString('en-US', { timeZone: 'America/New_York', hour: 'numeric', minute: 'numeric', hour12: true });
     }
 
-    const metsData = {
+    const unitedData = {
       wins,
       losses,
       teamLogo,
@@ -77,9 +76,9 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
       } : null,
     };
 
-    return NextResponse.json({ record: metsData });
+    return NextResponse.json({ record: unitedData });
   } catch (error) {
-    console.error('Error fetching Mets data:', error);
-    return NextResponse.json({ error: 'Error fetching Mets data' }, { status: 500 });
+    console.error('Error fetching United data:', error);
+    return NextResponse.json({ error: 'Error fetching United data' }, { status: 500 });
   }
 }
