@@ -9,7 +9,7 @@ import ManchesterUnitedCard from "@/components/UnitedCard";
 interface UpcomingGame {
   name: string;
   date: string;
-  time: string; // Add time property
+  time: string;
   week: number;
   opponentLogo: string;
 }
@@ -17,6 +17,7 @@ interface UpcomingGame {
 interface PatriotsData {
   wins: number;
   losses: number;
+  draws: number;
   teamLogo: string;
   nextGame: UpcomingGame | null;
 }
@@ -25,8 +26,8 @@ export default function Home() {
   const [patriotsData, setPatriotsData] = useState<PatriotsData | null>(null);
   const [phoenixSunsData, setPhoenixSunsData] = useState<PatriotsData | null>(null);
   const [loading, setLoading] = useState(true);
-  const [metsData, setMetsData] = useState<PatriotsData | null>(null); // Add state for Mets data
-  const [manchesterUnitedData, setManchesterUnitedData] = useState<PatriotsData | null>(null); // Add state for Manchester United data
+  const [metsData, setMetsData] = useState<PatriotsData | null>(null);
+  const [manchesterUnitedData, setManchesterUnitedData] = useState<PatriotsData | null>(null);
 
   useEffect(() => {
     const fetchPatriotsData = async () => {
@@ -51,7 +52,7 @@ export default function Home() {
       }
     };
 
-    const fetchMetsData = async () => { // Add fetch function for Mets data
+    const fetchMetsData = async () => {
       try {
         const response = await fetch('/api/mets');
         const data = await response.json();
@@ -61,7 +62,7 @@ export default function Home() {
       }
     };
 
-    const fetchManchesterUnitedData = async () => { // Add fetch function for Manchester United data
+    const fetchManchesterUnitedData = async () => {
       try {
         const response = await fetch('/api/united');
         const data = await response.json();
@@ -73,8 +74,8 @@ export default function Home() {
 
     fetchPatriotsData();
     fetchPhoenixSunsData();
-    fetchMetsData(); // Call the fetch function for Mets data
-    fetchManchesterUnitedData(); // Call the fetch function for Manchester United data
+    fetchMetsData();
+    fetchManchesterUnitedData();
   }, []);
 
   if (loading) {
@@ -110,6 +111,7 @@ export default function Home() {
         <ManchesterUnitedCard
           wins={manchesterUnitedData?.wins || 0}
           losses={manchesterUnitedData?.losses || 0}
+          draws={manchesterUnitedData?.draws || 0}
           teamLogo={manchesterUnitedData?.teamLogo || ''}
           nextGame={manchesterUnitedData?.nextGame || null}
         />

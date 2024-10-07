@@ -11,18 +11,19 @@ interface UpcomingGame {
 interface ManchesterUnitedCardProps {
   wins: number;
   losses: number;
+  draws: number;
   nextGame: UpcomingGame | null;
   teamLogo: string;
 }
 
-const ManchesterUnitedCard: React.FC<ManchesterUnitedCardProps> = ({ wins, losses, teamLogo, nextGame }) => {
+const ManchesterUnitedCard: React.FC<ManchesterUnitedCardProps> = ({ wins, losses, draws, teamLogo, nextGame }) => {
   return (
     <div className="bg-[#DA291C] border rounded-lg p-6 shadow-md">
       <div className="flex items-center justify-around">
         <img src={teamLogo} alt="Manchester United Logo" className="w-40 h-40" />
         <div className="flex items-center flex-col gap-2">
           <h2 className="text-2xl font-bold">Manchester United</h2>
-          <p className="text-2xl text-neutral-300">{wins} - {losses}</p>
+          <p className="text-2xl text-neutral-300">{wins} - {losses} - {draws}</p>
         </div>
       </div>
       {nextGame ? (

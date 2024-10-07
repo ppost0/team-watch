@@ -45,13 +45,15 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
 
     const response = await axios.get<UnitedData>(unitedApiUrl);
     const recordSummary = response.data.team.recordSummary;
-    const [wins, losses] = recordSummary.split('-').map(Number);
+    const [wins, losses, draws] = recordSummary.split('-').map(Number);
     const teamLogo = response.data.team.logo;
 
     const upcomingGames = response.data.events.filter(event => {
       const eventDate = new Date(event.date);
+      console.log('eventDate', eventDate)
       return eventDate > new Date();
     });
+    console.log('upcomingGames', upcomingGames)
 
     const nextGame = upcomingGames.length > 0 ? upcomingGames[0] : null;
 
@@ -67,6 +69,7 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
     const unitedData = {
       wins,
       losses,
+      draws,
       teamLogo,
       nextGame: nextGame ? {
         opponentLogo,
