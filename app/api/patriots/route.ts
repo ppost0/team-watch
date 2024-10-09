@@ -37,7 +37,6 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
 
     const upcomingGames = response.data.events.filter(event => {
       const eventDate = new Date(event.date);
-      // upcoming games
       return eventDate > new Date();
     });
 
@@ -52,7 +51,7 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
       const isHomeGame = nextGame.competitions[0].competitors[0].team.logos[0].href;
       opponentLogo = nextGame.competitions[0].competitors[0].team.logos[0].href;
       if (nextGame.competitions[0].competitors[0].team.location === "New England") {
-        opponentLogo = nextGame.competitions[0].competitors[1].team.logos[0].href; // Use the opponent's logo
+        opponentLogo = nextGame.competitions[0].competitors[1].team.logos[0].href;
       }
       const startTime = new Date(nextGame.date); // Ensure this is a valid date
       gameTime = startTime.toLocaleTimeString('en-US', { timeZone: 'America/New_York', hour: 'numeric', minute: 'numeric', hour12: true });
@@ -85,7 +84,7 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
       } : null,
     };
 
-    console.log('patriotsData', patriotsData);
+    // console.log('patriotsData', patriotsData);
 
     return NextResponse.json({ record: patriotsData });
   } catch (error) {

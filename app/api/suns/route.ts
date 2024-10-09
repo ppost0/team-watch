@@ -48,7 +48,7 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
 
     const response = await axios.get<SunsData>(sunsApiUrl);
 
-    console.log('HERE', response.data.events[0])
+    // console.log('HERE', response.data.events[0])
 
     const recordSummary = response.data.team.recordSummary;
     const [wins, losses] = recordSummary.split('-').map(Number);

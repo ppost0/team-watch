@@ -4,7 +4,7 @@ import axios from 'axios';
 interface MetsData {
   team: {
     recordSummary: string;
-    logo: string; // Added logo property
+    logo: string;
   };
   events: Array<{
     name: string;
@@ -25,7 +25,6 @@ interface UpcomingGame {
   opponentLogo: string;
 }
 
-// Function to format the date
 const formatDate = (dateString: string) => {
   const date = new Date(dateString);
   const today = new Date();
